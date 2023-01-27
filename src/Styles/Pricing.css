@@ -1,0 +1,127 @@
+.box {
+  width: 100%;
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bg-blackk {
+  background-color: #0c1e25;
+  height: 94vh;
+}
+.bg-whitee {
+  background-color: #fff;
+  height: 94vh;
+}
+
+.pricing-container {
+  display: flex;
+  color: #fff;
+}
+
+.light-option1,
+.light-option2,
+.light-option3,
+.dark-option1,
+.dark-option2,
+.dark-option3 {
+  min-width: 300px;
+  max-width: 470px;
+  min-height: 550px;
+  background-color: #29534e;
+  margin: 20px auto;
+  border-radius: 16px;
+}
+.dark-option1 h3,
+.dark-option2 h3,
+.dark-option3 h3 {
+  display: flex;
+  justify-content: center;
+  font-size: 2.3rem;
+  color: #ee9b00;
+}
+
+.light-option1 h3,
+.light-option2 h3,
+.light-option3 h3 {
+  font-size: 2.3rem;
+  display: flex;
+  justify-content: center;
+  color: #ff206e;
+}
+.dark-option1 h2,
+.dark-option2 h2,
+.dark-option3 h2,
+.light-option1 h2,
+.light-option2 h2,
+.light-option3 h2 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+  padding-top: 15px;
+}
+.dark-option1 span,
+.dark-option2 span,
+.dark-option3 span,
+.light-option1 span,
+.light-option2 span,
+.light-option3 span {
+  display: flex;
+  font-size: 1.3rem;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 15px;
+  font-weight: 300px;
+  color: #fff;
+}
+
+.price {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  max-width: 300px;
+  margin: auto;
+}
+
+button.button {
+  display: block;
+  width: 90%;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  background-color: #659664;
+  color: #fff;
+  font-size: 1.3rem;
+  cursor: pointer;
+  margin: 0 auto;
+}
+
+button:hover {
+  background-color: #588157;
+  transition: 0.4s;
+}
+input#custom-switch.form-check-input {
+    width: 50px;
+    height: 25px;
+    background-color: #aaa;
+    border: none;
+    box-shadow: none;
+    margin: 5px auto;
+}
+  .form-switch {
+    display: flex;
+    justify-content: center;
+    padding: 0px !important;
+    margin-top: 10px;
+}
+  
+@media (max-width: 971px) {
+  .bg-blackk {
+    height: 100%;
+  }
+  .secondary-bg {
+    height: 100%;
+  }
+}

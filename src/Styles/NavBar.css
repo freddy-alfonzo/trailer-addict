@@ -1,0 +1,117 @@
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  background-color: #001219;
+  align-items: center;
+}
+
+nav a {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+}
+
+nav span {
+  cursor: pointer;
+  margin-left: 40px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+div.container-box.container-fluid {
+  justify-content: space-between;
+}
+.movies:hover {
+  color: #fff;
+  border-bottom: 2px solid #ee9b00;
+}
+
+.movies-light:hover {
+  border-bottom: 2px solid #ff206e;
+  color: #fff;
+}
+h1.heading {
+  color: #ee9b00;
+  margin-left: 15px;
+  width: max-content;
+  justify-items: center;
+}
+.heading-light {
+  color: #ff206e;
+  margin-left: 15px;
+}
+.color-switcher {
+  margin: auto 10px;
+}
+.search-input {
+  min-width: 250px;
+  max-width: 400px;
+  max-height: 38px;
+  margin: auto 8px;
+}
+.search-input::placeholder {
+  text-align: center;
+}
+input#custom-switch.form-check-input {
+  width: 40px;
+  height: 20px;
+  background-color: #aaa;
+  border: none;
+  box-shadow: none;
+  margin: 5px auto;
+}
+div.color-switcher.form-switch {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: auto 10px;
+}
+input#custom-switch.form-check-input:focus-visible {
+  width: 100px;
+  height: 20px;
+  background-color: #aaa;
+}
+button.navbar-toggler.collapsed,
+button.navbar-toggler {
+  background-color: #001219;
+  max-width: 50px;
+  box-shadow: none;
+  padding: 5px 8px;
+  border: none;
+}
+button.navbar-toggler.collapsed:hover,
+button.navbar-toggler.collapsed:focus,
+button.navbar-toggler:hover,
+button.navbar-toggler:focus {
+  background-color: #001219;
+  max-width: 50px;
+  box-shadow: none;
+}
+span.navbar-toggler-icon {
+  margin: 0 auto;
+}
+.switch-container {
+  display: flex;
+  width: fit-content;
+  justify-content: center;
+  align-items: center;
+  margin: 10px auto;
+}
+
+@media (max-width: 991px) {
+  .movies,
+  .movies-light {
+    margin: 0;
+  }
+  .nav-box {
+    width: 50px;
+    height: 40.31px;
+  }
+  h1.heading,
+  h1.heading-light {
+    margin-left: 0;
+  }
+  .search-input {
+    margin: auto;
+  }
+}

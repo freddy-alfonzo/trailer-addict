@@ -1,0 +1,95 @@
+import React from "react";
+import axios from "axios";
+import { useEffect, useState, useContext } from "react";
+import { Context } from "./NavBar";
+import { AiFillPlayCircle, AiOutlineClose } from "react-icons/ai";
+import NoImg from "./assets/no_img.jpg";
+import "../Styles/Videos.css";
+import TrailerMovies from "../Trailers/TrailerMovies";
+
+function Trending() {
+  const { toggle, inputValue } = useContext(Context);
+  const input = inputValue;
+  let api = input ? "/search/multi" : "trending/all/week";
+  const [moviesData, setMoviesData] = useState([]);
+  const [trailer, setTrailer] = useState(false);
+  const [movieTitle, setMovieTitle] = useState("");
+  const [movie, setMovie] = useState({});
+
+  const movieCall = async () => {
+    const data = await axios.get(`https://api.themoviedb.org/3/${api}`, {
+      params: {
+        api_key: "bfb0e208917198ac83bd77dd5d4eb23e",
+        query: input,
+      },
+    });
+    const results = data.data.results;
+    setMoviesData(results);
+  };
+
+  useEffect(() => {
+    movieCall();
+  }, [input]);
+
+  const clickHandlder = (movie) => {
+    setMovieTitle(movie.title ? movie.title : movie.name);
+    setTrailer(!trailer);
+    setMovie(movie);
+  };
+  
+  if (moviesData.length === 0)
+    return (
+      <div className={toggle ? "mainBgColor" : "secondaryBgColor"}
+      >
+        <div className="movies-container">
+          <h3 className={toggle ? "dark-theme" : "light-theme"}>
+            No results found for "{input}"
+          </h3>
+        </div>
+      </div>
+    );
+  return (
+    <div className={toggle ? "mainBgColor" : "secondaryBgColor"}>
+      <div className="movies-container">
+        {moviesData.map((movie, i) => (
+          <div className={trailer ? "no-container" : "main-container"} key={i}>
+            <div className="ms-3 me-3 my-3">
+              <div
+                className="img-container"
+                onClick={() => clickHandlder(movie)}
+              >
+                <img
+                  src={
+                    movie.poster_path
+                      ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+                      : NoImg
+                  }
+                  alt={i}
+                />
+                <AiFillPlayCircle
+                  color="#fff"
+                  fontSize={40}
+                  className="playIcon"
+                />
+              </div>
+            </div>
+            <h3 className={toggle ? "dark-theme" : "light-theme"}>
+              {movie.title ? movie.title : movie.name}
+            </h3>
+          </div>
+        ))}
+        {trailer ? <TrailerMovies movieTitle={movieTitle} movie={movie} trailer={trailer} setTrailer={setTrailer} /> : ""}
+        <AiOutlineClose
+          id={trailer ? "exit" : "hide"}
+          className={toggle ? "dark-theme" : "light-theme"}
+          fontSize={55}
+          color={toggle ? "#fff" : "#000"}
+          cursor="pointer"
+          onClick={() => setTrailer(false)}
+        />
+      </div>
+    </div>
+  );
+}
+
+export default Trending;
