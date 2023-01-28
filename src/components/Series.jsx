@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState, useContext } from "react";
 import { Context } from "./NavBar";
-import { AiFillPlayCircle, AiOutlineClose } from "react-icons/ai";
+import { AiFillPlayCircle} from "react-icons/ai";
 import NoImg from "./assets/no_img.jpg";
 import "../Styles/Videos.css";
 import TrailerMovies from "../Trailers/TrailerMovies";
@@ -76,14 +76,7 @@ function Movies() {
           </div>
         ))}
         {trailer ? <TrailerMovies movieTitle={movieTitle} movie={movie} trailer={trailer} setTrailer={setTrailer}/> : ""}
-        <AiOutlineClose
-          id={trailer ? "exit" : "hide"}
-          className={toggle ? "dark-theme" : "light-theme"}
-          fontSize={55}
-          color={toggle ? "#fff" : "#000"}
-          cursor="pointer"
-          onClick={() => setTrailer(false)}
-        />
+        
       </div>
     </div>
   );

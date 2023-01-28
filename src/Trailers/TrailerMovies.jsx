@@ -2,24 +2,38 @@ import React from "react";
 import { useState, useEffect, useContext } from "react";
 import { Context } from "../components/NavBar";
 import ReactPlayer from "react-player";
-import movieTrailer from "movie-trailer";
 import { Modal, Button } from "react-bootstrap";
+import axios from "axios";
 import "../Styles/Trailer.css";
 
 function TrailerMovies({ movieTitle, movie, trailer, setTrailer }) {
-  const [video, setVideo] = useState("");
   const [videoURL, setVideoURL] = useState("");
   const [loader, setLoader] = useState(false);
   const { toggle } = useContext(Context);
   const width = window.innerWidth;
-  console.log(width);
+  const movieOrTv = movie.title ? "movie" : "tv";
 
-  function handleSearch() {
-    setVideo(movieTitle);
-    movieTrailer(video).then((res) => {
-      setVideoURL(res);
-    });
-  }
+  const movieTrailerCall = async () => {
+    axios
+      .get(`https://api.themoviedb.org/3/${movieOrTv}/${movie.id}`, {
+        params: {
+          api_key: "bfb0e208917198ac83bd77dd5d4eb23e",
+          append_to_response: "videos",
+        },
+      })
+      .then((res) => {
+        setVideoURL(
+          `https://www.youtube.com/watch?v=${
+            res.data.videos.results[res.data.videos.results.length - 1].key
+          }`
+        );
+      })
+      .catch((e) => {
+        console.log(e);
+        setVideoURL(null);
+      });
+  };
+
   function loaderHandler() {
     if (videoURL === null) setLoader("Loading...");
     setInterval(() => {
@@ -28,11 +42,10 @@ function TrailerMovies({ movieTitle, movie, trailer, setTrailer }) {
   }
 
   useEffect(() => {
-    handleSearch();
+    movieTrailerCall();
     loaderHandler();
   }, [videoURL]);
-
-  return (
+   return (
     <>
       <div className="player">
         {videoURL === null ? (
@@ -49,11 +62,15 @@ function TrailerMovies({ movieTitle, movie, trailer, setTrailer }) {
                 </Modal.Title>
               </Modal.Header>
               <Modal.Body className="modal-container">
-                <h3 className={
+                <h3
+                  className={
                     toggle
                       ? "text-white text-center mt-5 mb-5 fs-3"
                       : "text-black text-center mt-5 mb-5 fs-3"
-                  }>{loader}</h3>
+                  }
+                >
+                  {loader}
+                </h3>
                 <h3
                   className={
                     toggle

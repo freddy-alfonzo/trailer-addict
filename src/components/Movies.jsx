@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState, useContext } from "react";
 import { Context } from "./NavBar";
-import { AiFillPlayCircle, AiOutlineClose } from "react-icons/ai";
+import { AiFillPlayCircle } from "react-icons/ai";
 import NoImg from "./assets/no_img.jpg";
 import "../Styles/Videos.css";
 import TrailerMovies from "../Trailers/TrailerMovies";
@@ -22,7 +22,7 @@ function Movies() {
       params: {
         api_key: "bfb0e208917198ac83bd77dd5d4eb23e",
         query: input,
-      },
+        },
     });
     const results = data.data.results;
     setMoviesData(results);
