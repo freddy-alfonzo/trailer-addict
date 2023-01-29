@@ -40,19 +40,19 @@ function Movies() {
 
   if (moviesData.length === 0)
     return (
-      <div className={toggle ? "mainBgColor" : "secondaryBgColor"}>
-        <div className="movies-container">
+      <main className={toggle ? "mainBgColor" : "secondaryBgColor"}>
+        <section className="movies-container">
           <h3 className={toggle ? "dark-theme" : "light-theme"}>
             No movies found for "{input}"
           </h3>
-        </div>
-      </div>
+        </section>
+      </main>
     );
   return (
-    <div
+    <main
       className={toggle ? "mainBgColor" : "secondaryBgColor"}
      >
-      <div className="movies-container">
+      <section className="movies-container">
         {moviesData.map((movie, i) => (
           <div className={trailer ? "no-container" : "main-container"} key={i}>
             <div className="ms-3 me-3 my-3">
@@ -78,8 +78,8 @@ function Movies() {
         ))}
         {trailer ? <TrailerMovies movieTitle={movieTitle} movie={movie} trailer={trailer} setTrailer={setTrailer} /> : ""}
 
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }
 

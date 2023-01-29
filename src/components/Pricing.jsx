@@ -17,9 +17,9 @@ function Pricing() {
   const [premiumCost, setPremiumCost] = useState("18.99");
 
   return (
-    <div className={toggle ? "bg-blackk" : "bg-whitee"}>
+    <main className={toggle ? "bg-blackk" : "bg-whitee"}>
       <Container fluid>
-        <div className="box">
+        <section className="box">
           <Row className="pricing-container">
             <Col>
               <div className={toggle ? "dark-option1" : "light-option1"}>
@@ -167,9 +167,9 @@ function Pricing() {
               </div>
             </Col>
           </Row>
-        </div>
+        </section>
       </Container>
-    </div>
+    </main>
   );
 }
 

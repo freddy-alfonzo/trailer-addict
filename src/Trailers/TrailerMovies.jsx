@@ -47,7 +47,7 @@ function TrailerMovies({ movieTitle, movie, trailer, setTrailer }) {
   }, [videoURL]);
    return (
     <>
-      <div className="player">
+      <section className="player">
         {videoURL === null ? (
           <Modal
             show={true}
@@ -142,7 +142,7 @@ function TrailerMovies({ movieTitle, movie, trailer, setTrailer }) {
             </Modal>
           </div>
         )}
-      </div>
+      </section>
     </>
   );
 }
